@@ -1,0 +1,26 @@
+{
+  "name": "zettelkasten-wiki",
+  "main": "./lib/zettelkasten-wiki",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationHooks": {
+    "atom-workspace": "academic-markdown:grammar-used"
+  },
+  "repository": "https://github.com/atom/zettelkasten-wiki",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "fs-plus": "2.x"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "provide"
+      }
+    }
+  }
+}
