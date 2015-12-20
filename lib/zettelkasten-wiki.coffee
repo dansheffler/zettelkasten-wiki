@@ -31,21 +31,29 @@ module.exports = ZettelkastenWiki =
     @subscriptions.dispose()
 
   follow: ->
-    editor = atom.workspace.getActiveTextEditor()
-    cursorPosition = editor.getCursorBufferPosition()
-    noteName = editor.tokenForBufferPosition(cursorPosition)
     noteDirectory = fs.normalize(atom.config.get('zettelkasten-wiki.directory'))
     noteExtension = if atom.config.get('zettelkasten-wiki.extensions') then atom.config.get('zettelkasten-wiki.extensions')[0] else '.md'
-    return unless noteName
-    return unless noteName.value
-    return unless noteName.scopes.indexOf('string.other.link') > -1
-    noteName = noteName.value
-    return unless noteName.length
-    return unless noteName
-    notePath = path.join(noteDirectory, noteName + noteExtension)
-    unless fs.existsSync(notePath)
-      fs.writeFileSync(notePath, '')
-    atom.workspace.open(notePath)
+    editor = atom.workspace.getActiveTextEditor()
+    cursorPosition = editor.getCursorBufferPosition()
+    buffer = editor.getBuffer()
+    currentRow = buffer.lineForRow(cursorPosition.row)
+    pattern = /\[\[([^\]]+)\]\]/g
+    match = pattern.exec currentRow
+    return unless match
+    matches = true
+    while match
+      return if cursorPosition.column < match.index
+      if cursorPosition.column < (match.index + match[0].length)
+        noteName = match[1]
+        notePath = path.join(noteDirectory, noteName + noteExtension)
+        unless fs.existsSync(notePath)
+          fs.writeFileSync(notePath, '')
+        atom.workspace.open(notePath)
+        return
+      else
+        match = pattern.exec currentRow
+
+
 
   provide: ->
     unless @provider?

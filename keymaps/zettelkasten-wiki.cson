@@ -7,5 +7,5 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
-'atom-workspace':
+'.workspace .editor:not(.mini), .workspace':
   'ctrl-enter': 'zettelkasten-wiki:follow'
