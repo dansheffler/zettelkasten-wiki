@@ -20,9 +20,6 @@ class LinkProvider
       for note in notes
         continue unless note.endsWith(noteExtension)
         note = note.substr(0, note.lastIndexOf('.'))
-        console.log(note)
-        # var input = 'myfile.png';
-        # var output = input.substr(0, input.lastIndexOf('.')) || input;
 
         suggestions.push
           selector: '.source.gfm'
