@@ -57,13 +57,12 @@ module.exports = ZettelkastenWiki =
     noteDirectory = fs.normalize(atom.config.get('zettelkasten-wiki.directory'))
     noteExtension = if atom.config.get('zettelkasten-wiki.extensions') then atom.config.get('zettelkasten-wiki.extensions')[0] else '.md'
     editor = atom.workspace.getActiveTextEditor()
-    path = editor.getPath()
+    notePath = editor.getPath()
     return unless path.startsWith(noteDirectory) and path.endsWith(noteExtension)
-    text = path.replace noteDirectory, ""
+    text = notePath.replace noteDirectory, ""
     text = text.replace noteExtension, ""
     text = "[[" + text + "]]"
     atom.clipboard.write(text)
-    console.log(text)
 
   provide: ->
     unless @provider?
