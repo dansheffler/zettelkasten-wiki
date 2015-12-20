@@ -2,8 +2,8 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Toggle zettelkasten-wiki'
-      'command': 'zettelkasten-wiki:toggle'
+      'label': 'Follow Link'
+      'command': 'zettelkasten-wiki:follow'
     }
   ]
 'menu': [
@@ -13,8 +13,8 @@
       'label': 'zettelkasten-wiki'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'zettelkasten-wiki:toggle'
+          'label': 'Follow Link'
+          'command': 'zettelkasten-wiki:follow'
         }
       ]
     ]

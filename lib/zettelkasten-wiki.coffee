@@ -24,8 +24,8 @@ module.exports = ZettelkastenWiki =
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
-    # Register command that follows the link
     @subscriptions.add atom.commands.add 'atom-workspace', 'zettelkasten-wiki:follow': => @follow()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'zettelkasten-wiki:copyLink': => @copyLink()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -53,7 +53,17 @@ module.exports = ZettelkastenWiki =
       else
         match = pattern.exec currentRow
 
-
+  copyLink: ->
+    noteDirectory = fs.normalize(atom.config.get('zettelkasten-wiki.directory'))
+    noteExtension = if atom.config.get('zettelkasten-wiki.extensions') then atom.config.get('zettelkasten-wiki.extensions')[0] else '.md'
+    editor = atom.workspace.getActiveTextEditor()
+    path = editor.getPath()
+    return unless path.startsWith(noteDirectory) and path.endsWith(noteExtension)
+    text = path.replace noteDirectory, ""
+    text = text.replace noteExtension, ""
+    text = "[[" + text + "]]"
+    atom.clipboard.write(text)
+    console.log(text)
 
   provide: ->
     unless @provider?
@@ -61,20 +71,3 @@ module.exports = ZettelkastenWiki =
       @provider = new LinkProvider()
 
     @provider
-
-# linkProvider =
-#   selector: '.source.gfm'
-#
-#   # This will take priority over the default provider, which has a priority of 0.
-#   # `excludeLowerPriority` will suppress any providers with a lower priority
-#   # i.e. The default provider will be suppressed
-#   inclusionPriority: 1
-#   excludeLowerPriority: true
-#
-#   # Required: Return a promise, an array of suggestions, or null.
-#   getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix, activatedManually}) ->
-#     new Promise (resolve) ->
-#       resolve([text: 'something'])
-#
-# provide: ->
-#   @linkProvider

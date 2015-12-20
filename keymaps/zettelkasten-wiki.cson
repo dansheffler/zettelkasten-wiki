@@ -9,3 +9,4 @@
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 '.workspace .editor:not(.mini), .workspace':
   'ctrl-enter': 'zettelkasten-wiki:follow'
+  'ctrl-alt-c': 'zettelkasten-wiki:copyLink'
