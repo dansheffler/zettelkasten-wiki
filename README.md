@@ -9,3 +9,9 @@ This is a package for the Atom editor that enables wiki style links, `[[Like Thi
     the autocomplete-plus package when you begin typing a link.
 3.  `ctrl-alt-c` will copy a link to the file open in the current
     buffer if it is a note.
+    
+## installation
+
+`apm install dansheffler/zettelkasten-wiki`
+
+For more details on installing, updating and uninstalling packages from the command line, see: [atom/apm#518 (comment)](https://github.com/atom/apm/pull/518#issuecomment-194562396)
