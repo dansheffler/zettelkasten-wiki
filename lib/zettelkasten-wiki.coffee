@@ -58,7 +58,7 @@ module.exports = ZettelkastenWiki =
     noteExtension = if atom.config.get('zettelkasten-wiki.extensions') then atom.config.get('zettelkasten-wiki.extensions')[0] else '.md'
     editor = atom.workspace.getActiveTextEditor()
     notePath = editor.getPath()
-    return unless path.startsWith(noteDirectory) and path.endsWith(noteExtension)
+    return unless notePath.startsWith(noteDirectory) and notePath.endsWith(noteExtension)
     text = notePath.replace noteDirectory, ""
     text = text.replace noteExtension, ""
     text = "[[" + text + "]]"
