@@ -61,6 +61,7 @@ module.exports = ZettelkastenWiki =
     return unless notePath.startsWith(noteDirectory) and notePath.endsWith(noteExtension)
     text = notePath.replace noteDirectory, ""
     text = text.replace noteExtension, ""
+    text = text.replace /^\/+|^\\+/g, ""
     text = "[[" + text + "]]"
     atom.clipboard.write(text)
 
