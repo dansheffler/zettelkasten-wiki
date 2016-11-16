@@ -1,3 +1,11 @@
-'.workspace .editor:not(.mini), .workspace':
+'.platform-darwin atom-workspace atom-text-editor:not([mini])':
   'ctrl-enter': 'atom-notelink:follow'
   'ctrl-alt-c': 'atom-notelink:copylink'
+
+'.platform-linux atom-workspace atom-text-editor:not([mini])':
+  'alt-enter': 'atom-notelink:follow'
+  'alt-c': 'atom-notelink:copylink'
+
+'.platform-win32 atom-workspace atom-text-editor:not([mini])':
+  'alt-enter': 'atom-notelink:follow'
+  'alt-c': 'atom-notelink:copylink'

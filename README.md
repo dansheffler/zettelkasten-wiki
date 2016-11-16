@@ -10,9 +10,9 @@ After installation, go to the settings for this package and set the location to 
 
 ## Commands
 
-1. `ctrl+enter` will follow the link under the cursor and open the note with that name. If there is no note with that name, a new note will be created.
+1. `ctrl-enter` on Mac and `alt-enter` on Windows and Linux will follow the link under the cursor and open the note with that name. If there is no note with that name, a new note will be created.
 
-2. `ctrl-alt-c` will get the link for the currently open note and place it into your system clipboard.
+2. `ctrl-alt-c` on Mac and `alt-c` on Windows and Linux will get the link for the currently open note and place it into your system clipboard.
 
 3. When you begin typing a link, the package will auto-suggest notes for you. This is `[[` by default.
 
