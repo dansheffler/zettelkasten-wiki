@@ -1,3 +1,7 @@
+## 0.4.0
+* Add click to follow link
+* Update readme
+
 ## 0.3.0
 * Update readme keymap example
 

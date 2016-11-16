@@ -1,6 +1,6 @@
 fs = require 'fs-plus'
 path = require 'path'
-{CompositeDisposable} = require 'atom'
+{CompositeDisposable, Disposable} = require 'atom'
 escapeStringRegexp = require 'escape-string-regexp'
 
 module.exports = atomNoteLink =
@@ -39,6 +39,21 @@ module.exports = atomNoteLink =
 
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-notelink:follow': => @follow()
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-notelink:copylink': => @copyLink()
+
+    disposables = new CompositeDisposable
+
+    addEventListener = (editor, eventName, handler) ->
+      editorView = atom.views.getView(editor)
+      editorView.addEventListener eventName, handler
+      new Disposable ->
+        editor.removeEventListener eventName, handler
+
+    atom.workspace.observeTextEditors (editor) ->
+      disposables.add addEventListener editor, 'click', (event) ->
+        if event.altKey
+          editorView = atom.views.getView(editor)
+          atom.commands.dispatch editorView, 'atom-notelink:follow'
+        return
 
   deactivate: ->
     @subscriptions.dispose()
