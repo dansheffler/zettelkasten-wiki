@@ -1,0 +1,3 @@
+'.workspace .editor:not(.mini), .workspace':
+  'ctrl-enter': 'atom-notelink:follow'
+  'ctrl-alt-c': 'atom-notelink:copyLink'

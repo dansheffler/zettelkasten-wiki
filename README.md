@@ -1,17 +1,28 @@
-# the Zettelkasten Wiki Package #
+# atom-notelink package
 
-This is a package for the Atom editor that enables wiki style links, `[[Like This]]`.  Right now there are only two things you can do with this:
+Create and use wiki style links in your notes. `[[like this]]`. Supports custom note markers and regex, so you can use single brackets `[like this]` or even custom symbols `🔗like this🔗` or `§like this§`. The symbols can be different, for example: `★like this|` or even `❀like this♥`
 
-1.  `ctrl+enter` follows the link under the cursor to the note with
-    that name in your note directory (which must be filled in under
-    settings).
-2.  The package provides autocomplete suggestions for note titles to
-    the autocomplete-plus package when you begin typing a link.
-3.  `ctrl-alt-c` will copy a link to the file open in the current
-    buffer if it is a note.
-    
-## installation
+This package was [created by @dansheffler](https://github.com/dansheffler/zettelkasten-wiki) and I forked it to add some improvements.
 
-`apm install dansheffler/zettelkasten-wiki`
+## Setup
 
-For more details on installing, updating and uninstalling packages from the command line, see: [atom/apm#518 (comment)](https://github.com/atom/apm/pull/518#issuecomment-194562396)
+After installation, go to the settings for this package and set the location to your notes directory. You can also customize the link symbols and regex.
+
+## Commands
+
+1. `ctrl+enter` will follow the link under the cursor and open the note with that name. If there is no note with that name, a new note will be created.
+
+2. `ctrl-alt-c` will get the link for the currently open note and place it into your system clipboard.
+
+3. When you begin typing a link, the package will auto-suggest notes for you. This is `[[` by default.
+
+You can make your own keymaps in your keymap.cson. Change `ctrl-enter` to something else:
+
+```
+'.workspace .editor:not(.mini), .workspace':
+  'ctrl-enter': 'atom-notelink:follow'
+```
+
+## Contribution
+
+[Open an issue](https://github.com/xHN35RQ/atom-notelink/issues) if you have any problems, find any bugs or have any suggestions for improvement in the code or plugin architecture. Thanks.
