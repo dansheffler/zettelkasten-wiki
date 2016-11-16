@@ -1,3 +1,7 @@
+## 0.5.0
+* Properly dispose of click handler
+* Update readme
+
 ## 0.4.0
 * Add click to follow link
 * Update readme
