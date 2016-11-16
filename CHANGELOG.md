@@ -1,3 +1,6 @@
+## 0.6.0
+* Update readme: typo
+
 ## 0.5.0
 * Properly dispose of click handler
 * Update readme

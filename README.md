@@ -17,7 +17,7 @@ After installation, go to the settings for this package and set the location to 
   * `ctrl-enter` on Mac
   * `alt-enter` on Windows and Linux
 
-2. `atom-notelink:follow` will get the link for the currently open note and place it into your system clipboard.
+2. `atom-notelink:copylink` will get the link for the currently open note and place it into your system clipboard.
   * `ctrl-alt-c` on Mac
   * `alt-c` on Windows and Linux
 
