@@ -1,4 +1,5 @@
 fs = require 'fs-plus'
+escapeStringRegexp = require 'escape-string-regexp'
 
 module.exports =
 class LinkProvider
@@ -10,7 +11,7 @@ class LinkProvider
 
   getSuggestions: ({editor, bufferPosition}) ->
     prefix = @getPrefix(editor, bufferPosition)
-    return unless prefix[1] is '['
+    return unless prefix[0] is atom.config.get('atom-notelink.linkbegin')[0]
     new Promise (resolve) ->
       noteDirectory = fs.normalize(atom.config.get('atom-notelink.directory'))
       noteExtension = if atom.config.get('atom-notelink.extensions') then atom.config.get('atom-notelink.extensions')[0] else '.md'
@@ -29,7 +30,9 @@ class LinkProvider
 
   getPrefix: (editor, bufferPosition) ->
       # Whatever your prefix regex might be
-      regex = /\[\[[\w 0-9_-]+$/
+      buildRegex = escapeStringRegexp(atom.config.get('atom-notelink.linkbegin'))
+      buildRegex += '[\\w 0-9_-]+$'
+      regex = new RegExp(buildRegex)
 
       # Get the text for the line up to the triggered buffer position
       line = editor.getTextInRange([[bufferPosition.row, 0], bufferPosition])

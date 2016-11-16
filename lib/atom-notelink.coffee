@@ -1,6 +1,7 @@
 fs = require 'fs-plus'
 path = require 'path'
 {CompositeDisposable} = require 'atom'
+escapeStringRegexp = require 'escape-string-regexp'
 
 module.exports = atomNoteLink =
   config:
@@ -16,14 +17,28 @@ module.exports = atomNoteLink =
       default: ['.md', '.mmd', 'markdown']
       items:
         type: 'string'
+    linkbegin:
+      title: 'Link Begin Symbol'
+      description: 'The symbol used to mark the beginning of a link'
+      type: 'string'
+      default: '[['
+    linkend:
+      title: 'Link End Symbol'
+      description: 'The symbol used to mark the ending of a link'
+      type: 'string'
+      default: ']]'
+    linkregex:
+      title: 'Link Regex'
+      description: 'The regex used to identify the contents of a link'
+      type: 'string'
+      default: '(.+)'
   subscriptions: null
 
   activate: (state) ->
-    # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-notelink:follow': => @follow()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-notelink:copyLink': => @copyLink()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-notelink:copylink': => @copyLink()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -35,7 +50,10 @@ module.exports = atomNoteLink =
     cursorPosition = editor.getCursorBufferPosition()
     buffer = editor.getBuffer()
     currentRow = buffer.lineForRow(cursorPosition.row)
-    pattern = /\[\[([^\]]+)\]\]/g
+    linkRegex = escapeStringRegexp(atom.config.get('atom-notelink.linkbegin'))
+    linkRegex += atom.config.get('atom-notelink.linkregex')
+    linkRegex += escapeStringRegexp(atom.config.get('atom-notelink.linkend'))
+    pattern = new RegExp(linkRegex, 'g')
     match = pattern.exec currentRow
     return unless match
     matches = true
@@ -60,7 +78,7 @@ module.exports = atomNoteLink =
     text = notePath.replace noteDirectory, ""
     text = text.replace noteExtension, ""
     text = text.replace /^\/+|^\\+/g, ""
-    text = "[[" + text + "]]"
+    text = atom.config.get('atom-notelink.linkbegin') + text + atom.config.get('atom-notelink.linkend')
     atom.clipboard.write(text)
 
   provide: ->
