@@ -14,12 +14,12 @@ After installation, go to the settings for this package and set the location to 
 
 1. `atom-notelink:follow` will follow the link under the cursor and open the note with that name. If there is no note with that name, a new note will be created.
   * `alt-click`
-  * `ctrl-enter` on Mac
   * `alt-enter` on Windows and Linux
+  * `ctrl-enter` on Mac
 
 2. `atom-notelink:copylink` will get the link for the currently open note and place it into your system clipboard.
-  * `ctrl-alt-c` on Mac
   * `alt-c` on Windows and Linux
+  * `ctrl-alt-c` on Mac
 
 3. When you begin typing a link symbol, the package will auto-suggest notes for you. This is `[[` by default.
 

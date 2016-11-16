@@ -1,3 +1,6 @@
+## 0.7.0
+* Update readme: commands
+
 ## 0.6.0
 * Update readme: typo
 
