@@ -1,3 +1,6 @@
+## 0.3.0
+* Update readme keymap example
+
 ## 0.2.0
 * Cross platform keybinds
 * Update changelog

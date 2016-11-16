@@ -19,7 +19,7 @@ After installation, go to the settings for this package and set the location to 
 You can make your own keymaps in your keymap.cson. Change `ctrl-enter` to something else:
 
 ```
-'.workspace .editor:not(.mini), .workspace':
+'.platform-darwin atom-workspace atom-text-editor:not([mini])':
   'ctrl-enter': 'atom-notelink:follow'
 ```
 
