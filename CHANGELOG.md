@@ -1,3 +1,6 @@
+## 0.8.0
+* Fix click handling
+
 ## 0.7.0
 * Update readme: commands
 

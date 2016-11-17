@@ -46,12 +46,15 @@ module.exports = atomNoteLink =
       new Disposable ->
         editorView.removeEventListener eventName, handler
 
-    atom.workspace.observeTextEditors (editor) =>
-      @subscriptions.add addEventListener editor, 'click', (event) ->
+    @subscriptions.add atom.workspace.observeTextEditors (editor) =>
+      disposables = new CompositeDisposable
+      disposables.add addEventListener editor, 'click', (event) =>
         if event.altKey
-          editorView = atom.views.getView(editor)
-          atom.commands.dispatch editorView, 'atom-notelink:follow'
-        return
+          @follow()
+      disposables.add editor.onDidDestroy =>
+        disposables.dispose()
+        @subscriptions.remove(disposables)
+      @subscriptions.add(disposables)
 
   deactivate: ->
     @subscriptions.dispose()
