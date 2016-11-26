@@ -1,3 +1,6 @@
+## 0.9.0
+* Update readme with demo gif
+
 ## 0.8.0
 * Fix click handling
 

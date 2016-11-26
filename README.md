@@ -2,6 +2,8 @@
 
 Create and use wiki style links in your notes. `[[like this]]`.
 
+![atom-notelink](https://cloud.githubusercontent.com/assets/9103375/20638603/9e1ca0f8-b360-11e6-988c-f11a89033d29.gif)
+
 Supports custom note markers and regex, so you can use single brackets `[like this]` or even custom symbols `🔗like this🔗` or `§like this§`. The start and end symbols can be different, for example: `★like this|` or even `❀like this♥`.
 
 This package was [created by @dansheffler](https://github.com/dansheffler/zettelkasten-wiki) and I forked it to add some improvements.
