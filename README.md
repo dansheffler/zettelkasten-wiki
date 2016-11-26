@@ -1,4 +1,4 @@
-# atom-notelink package
+# atom notelink package
 
 Create and use wiki style links in your notes. `[[like this]]`.
 
@@ -14,12 +14,12 @@ After installation, go to the settings for this package and set the location to 
 
 ## Commands
 
-1. `atom-notelink:follow` will follow the link under the cursor and open the note with that name. If there is no note with that name, a new note will be created.
+1. `notelink:follow` will follow the link under the cursor and open the note with that name. If there is no note with that name, a new note will be created.
   * `alt-click`
   * `alt-enter` on Windows and Linux
   * `ctrl-enter` on Mac
 
-2. `atom-notelink:copylink` will get the link for the currently open note and place it into your system clipboard.
+2. `notelink:copylink` will get the link for the currently open note and place it into your system clipboard.
   * `alt-c` on Windows and Linux
   * `ctrl-alt-c` on Mac
 
@@ -29,7 +29,7 @@ You can make your own keymaps in your keymap.cson. Change `ctrl-enter` to someth
 
 ```
 '.platform-darwin atom-workspace atom-text-editor:not([mini])':
-  'ctrl-enter': 'atom-notelink:follow'
+  'ctrl-enter': 'notelink:follow'
 ```
 
 ## Contribution

@@ -1,6 +1,6 @@
 {
   "name": "notelink",
-  "main": "./lib/atom-notelink",
+  "main": "./lib/notelink",
   "version": "0.9.1",
   "description": "Create and use wiki style links in your notes",
   "keywords": [],

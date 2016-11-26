@@ -11,10 +11,10 @@ class LinkProvider
 
   getSuggestions: ({editor, bufferPosition}) ->
     prefix = @getPrefix(editor, bufferPosition)
-    return unless prefix[0] is atom.config.get('atom-notelink.linkbegin')[0]
+    return unless prefix[0] is atom.config.get('notelink.linkbegin')[0]
     new Promise (resolve) ->
-      noteDirectory = fs.normalize(atom.config.get('atom-notelink.directory'))
-      noteExtension = if atom.config.get('atom-notelink.extensions') then atom.config.get('atom-notelink.extensions')[0] else '.md'
+      noteDirectory = fs.normalize(atom.config.get('notelink.directory'))
+      noteExtension = if atom.config.get('notelink.extensions') then atom.config.get('notelink.extensions')[0] else '.md'
       notes = fs.readdirSync(noteDirectory)
 
       suggestions = []
@@ -30,7 +30,7 @@ class LinkProvider
 
   getPrefix: (editor, bufferPosition) ->
       # Whatever your prefix regex might be
-      buildRegex = escapeStringRegexp(atom.config.get('atom-notelink.linkbegin'))
+      buildRegex = escapeStringRegexp(atom.config.get('notelink.linkbegin'))
       buildRegex += '[\\w 0-9_-]+$'
       regex = new RegExp(buildRegex)
 
