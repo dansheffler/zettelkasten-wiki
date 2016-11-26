@@ -19,7 +19,7 @@ After installation, go to the settings for this package and set the location to 
   * `alt-enter` on Windows and Linux
   * `ctrl-enter` on Mac
 
-2. `notelink:copylink` will get the link for the currently open note and place it into your system clipboard.
+2. `notelink:copy-link` will get the link for the currently open note and place it into your system clipboard.
   * `alt-c` on Windows and Linux
   * `ctrl-alt-c` on Mac
 

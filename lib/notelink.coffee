@@ -38,7 +38,7 @@ module.exports = atomNoteLink =
     @subscriptions = new CompositeDisposable
 
     @subscriptions.add atom.commands.add 'atom-workspace', 'notelink:follow': => @follow()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'notelink:copylink': => @copyLink()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'notelink:copy-link': => @copyLink()
 
     addEventListener = (editor, eventName, handler) ->
       editorView = atom.views.getView(editor)

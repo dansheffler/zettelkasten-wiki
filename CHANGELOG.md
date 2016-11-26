@@ -1,3 +1,10 @@
+## 0.10.0
+* Rename to notelink
+* Clarify copy link command
+
+## 0.9.1
+* Update atom.io url
+
 ## 0.9.0
 * Update readme with demo gif
 

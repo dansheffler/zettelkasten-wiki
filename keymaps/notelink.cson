@@ -1,11 +1,11 @@
 '.platform-darwin atom-workspace atom-text-editor:not([mini])':
   'ctrl-enter': 'notelink:follow'
-  'ctrl-alt-c': 'notelink:copylink'
+  'ctrl-alt-c': 'notelink:copy-link'
 
 '.platform-linux atom-workspace atom-text-editor:not([mini])':
   'alt-enter': 'notelink:follow'
-  'alt-c': 'notelink:copylink'
+  'alt-c': 'notelink:copy-link'
 
 '.platform-win32 atom-workspace atom-text-editor:not([mini])':
   'alt-enter': 'notelink:follow'
-  'alt-c': 'notelink:copylink'
+  'alt-c': 'notelink:copy-link'
