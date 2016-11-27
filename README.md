@@ -8,10 +8,6 @@ Supports custom note markers and regex, so you can use single brackets `[like th
 
 This package was [created by @dansheffler](https://github.com/dansheffler/zettelkasten-wiki) and I forked it to add some improvements.
 
-## Setup
-
-After installation, go to the settings for this package and set the location to your notes directory. You can also customize the link symbols and regex.
-
 ## Commands
 
 1. `notelink:follow` will follow the link under the cursor and open the note with that name. If there is no note with that name, a new note will be created.

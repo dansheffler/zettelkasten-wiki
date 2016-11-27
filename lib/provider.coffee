@@ -13,8 +13,9 @@ class LinkProvider
     prefix = @getPrefix(editor, bufferPosition)
     return unless prefix[0] is atom.config.get('notelink.linkbegin')[0]
     new Promise (resolve) ->
-      noteDirectory = fs.normalize(atom.config.get('notelink.directory'))
-      noteExtension = if atom.config.get('notelink.extensions') then atom.config.get('notelink.extensions')[0] else '.md'
+      [projPath, relPath] = atom.project.relativizePath(editor?.buffer?.file?.path)
+      noteDirectory = fs.normalize(projPath)
+      noteExtension = atom.config.get('notelink.extension')
       notes = fs.readdirSync(noteDirectory)
 
       suggestions = []

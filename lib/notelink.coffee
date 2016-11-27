@@ -5,16 +5,11 @@ escapeStringRegexp = require 'escape-string-regexp'
 
 module.exports = atomNoteLink =
   config:
-    directory:
-      title: 'Note Directory'
-      description: 'The directory where you plan to store your notes'
+    extension:
+      title: 'Note Extension'
+      description: 'The extension used for newly created notes'
       type: 'string'
-      default: path.join(process.env.ATOM_HOME, 'notelink')
-    extensions:
-      title: 'Extensions'
-      description: 'The first extension will be used for newly created notes.'
-      type: 'array'
-      default: ['.md', '.mmd', 'markdown']
+      default: '.md'
       items:
         type: 'string'
     linkbegin:
@@ -60,9 +55,10 @@ module.exports = atomNoteLink =
     @subscriptions.dispose()
 
   follow: ->
-    noteDirectory = fs.normalize(atom.config.get('notelink.directory'))
-    noteExtension = if atom.config.get('notelink.extensions') then atom.config.get('notelink.extensions')[0] else '.md'
     editor = atom.workspace.getActiveTextEditor()
+    [projPath, relPath] = atom.project.relativizePath(editor?.buffer?.file?.path)
+    noteDirectory = fs.normalize(projPath)
+    noteExtension = atom.config.get('notelink.extension')
     cursorPosition = editor.getCursorBufferPosition()
     buffer = editor.getBuffer()
     currentRow = buffer.lineForRow(cursorPosition.row)
@@ -86,15 +82,14 @@ module.exports = atomNoteLink =
         match = pattern.exec currentRow
 
   copyLink: ->
-    noteDirectory = fs.normalize(atom.config.get('notelink.directory'))
-    noteExtension = if atom.config.get('notelink.extensions') then atom.config.get('notelink.extensions')[0] else '.md'
+    noteExtension = atom.config.get('notelink.extension')
+    linkBegin = atom.config.get('notelink.linkbegin')
+    linkEnd = atom.config.get('notelink.linkend')
     editor = atom.workspace.getActiveTextEditor()
-    notePath = editor.getPath()
-    return unless notePath.startsWith(noteDirectory) and notePath.endsWith(noteExtension)
-    text = notePath.replace noteDirectory, ""
-    text = text.replace noteExtension, ""
+    [projPath, relPath] = atom.project.relativizePath(editor?.buffer?.file?.path)
+    text = relPath.replace noteExtension, ""
     text = text.replace /^\/+|^\\+/g, ""
-    text = atom.config.get('notelink.linkbegin') + text + atom.config.get('notelink.linkend')
+    text = linkBegin + text + linkEnd
     atom.clipboard.write(text)
 
   provide: ->

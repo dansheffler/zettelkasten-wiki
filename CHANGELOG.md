@@ -1,3 +1,6 @@
+## 0.11.0
+* File paths relative to project folder
+
 ## 0.10.0
 * Rename to notelink
 * Clarify copy link command
