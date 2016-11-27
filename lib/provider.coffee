@@ -1,12 +1,10 @@
 fs = require 'fs-plus'
+glob = require 'glob'
 escapeStringRegexp = require 'escape-string-regexp'
 
 module.exports =
 class LinkProvider
   selector: '.source.gfm'
-  inclusionPriority: 2
-  # suggestionPriority: 2
-
   filterSuggestions: true
 
   getSuggestions: ({editor, bufferPosition}) ->
@@ -16,13 +14,12 @@ class LinkProvider
       [projPath, relPath] = atom.project.relativizePath(editor?.buffer?.file?.path)
       noteDirectory = fs.normalize(projPath)
       noteExtension = atom.config.get('notelink.extension')
-      notes = fs.readdirSync(noteDirectory)
+      noteGlob = "**/*" + noteExtension
+      notes = glob.sync(noteGlob, {cwd: noteDirectory})
 
       suggestions = []
       for note in notes
-        continue unless note.endsWith(noteExtension)
-        note = note.substr(0, note.lastIndexOf('.'))
-
+        note = note.replace noteExtension, ""
         suggestions.push
           selector: '.source.gfm'
           text: note
@@ -30,9 +27,9 @@ class LinkProvider
       resolve(suggestions)
 
   getPrefix: (editor, bufferPosition) ->
-      # Whatever your prefix regex might be
+      # The prefix regex
       buildRegex = escapeStringRegexp(atom.config.get('notelink.linkbegin'))
-      buildRegex += '[\\w 0-9_-]+$'
+      buildRegex += '[\\w\\s0-9_-]+$'
       regex = new RegExp(buildRegex)
 
       # Get the text for the line up to the triggered buffer position

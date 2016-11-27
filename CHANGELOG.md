@@ -1,3 +1,6 @@
+## 0.12.0
+* Suggest notes from subfolders
+
 ## 0.11.0
 * File paths relative to project folder
 

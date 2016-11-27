@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "escape-string-regexp": ">=1.0.5",
-    "fs-plus": "2.x"
+    "fs-plus": "2.x",
+    "glob": ">=7.1.1"
   },
   "providedServices": {
     "autocomplete.provider": {
