@@ -1,3 +1,6 @@
+## 0.13.0
+* Rename to wikilink
+
 ## 0.12.0
 * Suggest notes from subfolders
 
@@ -46,4 +49,4 @@
 * Fix bug `path` -> `notePath`
 
 ## 0.0.0
-* Forked from https://github.com/dansheffler/atom-notelink
+* Forked from https://github.com/dansheffler/zettelkasten-wiki

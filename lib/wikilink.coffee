@@ -3,7 +3,7 @@ path = require 'path'
 {CompositeDisposable, Disposable} = require 'atom'
 escapeStringRegexp = require 'escape-string-regexp'
 
-module.exports = atomNoteLink =
+module.exports = atomWikiLink =
   config:
     extension:
       title: 'Note Extension'
@@ -32,8 +32,8 @@ module.exports = atomNoteLink =
   activate: (state) ->
     @subscriptions = new CompositeDisposable
 
-    @subscriptions.add atom.commands.add 'atom-workspace', 'notelink:follow': => @follow()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'notelink:copy-link': => @copyLink()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'wikilink:follow': => @follow()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'wikilink:copy-link': => @copyLink()
 
     addEventListener = (editor, eventName, handler) ->
       editorView = atom.views.getView(editor)
@@ -58,13 +58,13 @@ module.exports = atomNoteLink =
     editor = atom.workspace.getActiveTextEditor()
     [projPath, relPath] = atom.project.relativizePath(editor?.buffer?.file?.path)
     noteDirectory = fs.normalize(projPath)
-    noteExtension = atom.config.get('notelink.extension')
+    noteExtension = atom.config.get('wikilink.extension')
     cursorPosition = editor.getCursorBufferPosition()
     buffer = editor.getBuffer()
     currentRow = buffer.lineForRow(cursorPosition.row)
-    linkRegex = escapeStringRegexp(atom.config.get('notelink.linkbegin'))
-    linkRegex += atom.config.get('notelink.linkregex')
-    linkRegex += escapeStringRegexp(atom.config.get('notelink.linkend'))
+    linkRegex = escapeStringRegexp(atom.config.get('wikilink.linkbegin'))
+    linkRegex += atom.config.get('wikilink.linkregex')
+    linkRegex += escapeStringRegexp(atom.config.get('wikilink.linkend'))
     pattern = new RegExp(linkRegex, 'g')
     match = pattern.exec currentRow
     return unless match
@@ -82,9 +82,9 @@ module.exports = atomNoteLink =
         match = pattern.exec currentRow
 
   copyLink: ->
-    noteExtension = atom.config.get('notelink.extension')
-    linkBegin = atom.config.get('notelink.linkbegin')
-    linkEnd = atom.config.get('notelink.linkend')
+    noteExtension = atom.config.get('wikilink.extension')
+    linkBegin = atom.config.get('wikilink.linkbegin')
+    linkEnd = atom.config.get('wikilink.linkend')
     editor = atom.workspace.getActiveTextEditor()
     [projPath, relPath] = atom.project.relativizePath(editor?.buffer?.file?.path)
     text = relPath.replace noteExtension, ""

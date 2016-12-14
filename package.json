@@ -1,10 +1,10 @@
 {
-  "name": "notelink",
-  "main": "./lib/notelink",
+  "name": "wikilink",
+  "main": "./lib/wikilink",
   "version": "0.12.0",
   "description": "Create and use wiki style links in your notes",
   "keywords": [],
-  "repository": "https://github.com/xHN35RQ/atom-notelink",
+  "repository": "https://github.com/xHN35RQ/atom-wikilink",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

@@ -2,18 +2,18 @@
   'atom-text-editor': [
     {
       'label': 'Follow Link'
-      'command': 'notelink:follow'
+      'command': 'wikilink:follow'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'notelink'
+      'label': 'wikilink'
       'submenu': [
         {
           'label': 'Follow Link'
-          'command': 'notelink:follow'
+          'command': 'wikilink:follow'
         }
       ]
     ]
