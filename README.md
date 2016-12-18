@@ -6,7 +6,7 @@ Create and use wiki style links in your notes. `[[like this]]`.
 
 Supports custom note markers and regex, so you can use single brackets `[like this]` or even custom symbols `🔗like this🔗` or `§like this§`. The start and end symbols can be different, for example: `★like this|` or even `❀like this♥`.
 
-This package was [created by @dansheffler](https://github.com/dansheffler/zettelkasten-wiki) and I forked it to add some improvements.
+This package was [created by @dansheffler](https://github.com/dansheffler/zettelkasten-wiki) and I forked it to add [some improvements](CHANGELOG.md).
 
 ## Commands
 
