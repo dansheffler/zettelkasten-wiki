@@ -1,3 +1,6 @@
+## 0.14.0
+* Update readme
+
 ## 0.13.0
 * Rename to wikilink
 
