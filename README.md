@@ -30,4 +30,4 @@ You can make your own keymaps in your keymap.cson. Change `ctrl-enter` to someth
 
 ## Contribution
 
-[Open an issue](https://github.com/xHN35RQ/atom-wikilink/issues) if you have any problems, find any bugs or have any suggestions for improvement in the code or plugin architecture. Thanks.
+[Open an issue](https://github.com/Zettelkasten-Method/atom-wikilink/issues) if you have any problems, find any bugs or have any suggestions for improvement in the code or plugin architecture. Thanks.
