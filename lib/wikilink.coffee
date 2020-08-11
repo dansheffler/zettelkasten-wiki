@@ -87,10 +87,13 @@ module.exports = atomWikiLink =
     linkEnd = atom.config.get('wikilink.linkend')
     editor = atom.workspace.getActiveTextEditor()
     [projPath, relPath] = atom.project.relativizePath(editor?.buffer?.file?.path)
-    text = relPath.replace noteExtension, ""
-    text = text.replace /^\/+|^\\+/g, ""
-    text = linkBegin + text + linkEnd
-    atom.clipboard.write(text)
+    if relPath
+        text = relPath.replace noteExtension, ""
+        text = text.replace /^\/+|^\\+/g, ""
+        text = linkBegin + text + linkEnd
+        atom.clipboard.write(text)
+    else
+        console.log('You must save the file before you can copy a link to it.')
 
   provide: ->
     unless @provider?
