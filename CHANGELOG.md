@@ -1,3 +1,6 @@
+## 0.15.0
+* Avoid TypeError when attempting to copy link to unsaved file ([#9](https://github.com/Zettelkasten-Method/atom-wikilink/pull/9)) -- [@theshoals](https://github.com/theshoals)
+
 ## 0.14.0
 * Update readme
 
