@@ -1,0 +1,11 @@
+'.platform-darwin atom-workspace atom-text-editor:not([mini])':
+  'ctrl-enter': 'wikilink:follow'
+  'ctrl-alt-c': 'wikilink:copy-link'
+
+'.platform-linux atom-workspace atom-text-editor:not([mini])':
+  'alt-enter': 'wikilink:follow'
+  'alt-c': 'wikilink:copy-link'
+
+'.platform-win32 atom-workspace atom-text-editor:not([mini])':
+  'alt-enter': 'wikilink:follow'
+  'alt-c': 'wikilink:copy-link'
